@@ -2,6 +2,11 @@ import turtle
 
 scale = 10
 #any numbers
+em = 1.5
+#1.5 for best results, any for goofy results
+#1.4 and 1.6 work good to.
+
+mid_x = -6*scale
 
 def curve(f, r):
     for i in range(4):
@@ -9,9 +14,7 @@ def curve(f, r):
         turtle.right(r)
     turtle.right(15)
 
-def earI(f):
-#1.5 for best results, any for goofy results
-#1.4 works good to.
+def ear_in(f):
     turtle.forward(f)
     turtle.left(120)
     turtle.forward(f-(scale*0.5))
@@ -19,12 +22,11 @@ def earI(f):
     turtle.forward(f-(scale*.15))
     turtle.left(120)
 
-turtle.speed(15)
+turtle.speed(26)
 
-def cheekFuz():
+def cheek_fuz():
     for i in range (2):
         turtle.forward(scale*3)
-        #print(turtle.position())
         turtle.right(90)
         turtle.forward(scale*3)
         turtle.left(90)
@@ -34,22 +36,35 @@ def draw_face_inside_curves():
     turtle.down()
     turtle.left(22)
     curve(scale*2.03, 5.9)
-    #print(turtle.heading())
     turtle.up()
     turtle.goto(-scale*0.1, scale*8.5)
     turtle.down()
     turtle.right(91.4)
     curve(scale*1.73, -6)
-    #print(turtle.heading())
+
+def draw_eyes():
+    dist_nose_eyes = 4*scale
+    for i in range(-1, 2, 2):
+        turtle.goto(mid_x + i*dist_nose_eyes, scale*5)
+        turtle.dot(scale*.9)
+
+def mouth_draw():
+    turtle.goto(-scale*5.56, scale*4.35)
+    turtle.left(61)
+    turtle.down()
+    turtle.forward(scale*2)
+    turtle.up()
+    turtle.goto(-scale*4, scale*2.5)
+    turtle.right(80)
+    turtle.down()
+    curve(scale, 10)
+
 
 #bottom of face 
 turtle.left(195)
-#print(turtle.heading())
 curve(scale*3, 10)
-#print(turtle.heading())
-
 #l cheek
-cheekFuz()
+cheek_fuz()
 #l top face
 turtle.right(50)
 turtle.forward(scale*8)
@@ -64,8 +79,9 @@ turtle.forward(scale*3)
 turtle.right(136)
 turtle.forward(scale*8+2)
 turtle.left(45)
+
 #r cheek
-cheekFuz()
+cheek_fuz()
 turtle.up()
 #face inside curves
 draw_face_inside_curves()
@@ -80,28 +96,17 @@ turtle.up()
 turtle.goto(-scale*12.3, scale*16)
 turtle.left(90)
 turtle.down()
-earI(scale*1.5)
+ear_in(scale*em)
 turtle.up()
 turtle.goto(-scale*0.4, scale*16)
 turtle.right(21)
 turtle.down()
-earI(scale*1.5)
+ear_in(scale*em)
 turtle.up()
-#eyes
-turtle.goto(-scale*2, scale*5)
-turtle.dot(scale)
-turtle.goto(-scale*10, scale*5)
-turtle.dot(scale)
-#mouth (ish)
-turtle.goto(-scale*5.56, scale*4.35)
-turtle.left(61)
-turtle.down()
-turtle.forward(scale*2)
-turtle.up()
-turtle.goto(-scale*4, scale*2.5)
-turtle.right(80)
-turtle.down()
-curve(scale, 10)
+
+draw_eyes()
+mouth_draw()
+
 turtle.up()
 turtle.goto(scale*10, -scale*10)
 

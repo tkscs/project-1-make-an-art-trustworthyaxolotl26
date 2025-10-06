@@ -2,12 +2,15 @@ import turtle
 
 scale = 10
 #any numbers
+#pressecondnum20
 em = 1.5
 #1.5 for best results, any for goofy results
 #1.4 and 1.6 work good to.
+#pressecnum2or0.5
 
 mid_x = -6*scale
 
+#ilikethese
 def curve(f, r):
     for i in range(4):
         turtle.forward(f)

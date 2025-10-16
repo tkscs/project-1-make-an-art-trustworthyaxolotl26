@@ -1,6 +1,6 @@
 import turtle
 
-scale = 10
+scale = 20
 #only 10 for now
 
 def curve(f, r):
